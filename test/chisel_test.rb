@@ -36,4 +36,12 @@ def test_paragraph
   assert_equal "<p>\nRaphael Raphael Raphael\n</p>\n", chisel.parser("Raphael Raphael Raphael")
 end
 
+def test_emphasized_text
+assert_equal "<em>", chisel.emphasized_text("*")
+end
+
+def test_strong_text
+assert_equal "<strong>", chisel.emphasized_text("**")
+end
+
 end

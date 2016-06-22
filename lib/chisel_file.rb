@@ -3,6 +3,7 @@ require_relative "file_reader"
 
 class ChiselFile
 
+attr_accessor :final_text
 
 def parser(text)
   prepare_text = text.chomp("\n").split("\n\n")
@@ -13,9 +14,10 @@ def parser(text)
     end
       if line.start_with?("#")
         sorted_text << header_formatter(line)
-    end
+      end
   end
-  sorted_text.join("\n")
+  @final_text = sorted_text.join("\n")
+  emphasized_text(final_text)
 end
 
 def header_formatter(text)
@@ -25,6 +27,12 @@ end
 
 def paragraph_formatter(text)
   "<p>\n" + (text) + "\n</p>\n"
+end
+
+def emphasized_text(final_text)
+  final_text.gsub!("**", "<strong>") if final_text.include?("**")
+  final_text.gsub!("*", "<em>") if final_text.include?("*")
+  final_text
 end
 
 end
