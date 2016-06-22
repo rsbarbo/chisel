@@ -37,11 +37,16 @@ def test_paragraph
 end
 
 def test_emphasized_text
-assert_equal "<em>", chisel.emphasized_text("*")
+assert_equal "<em>", chisel.translate_to_tag("*")
 end
 
 def test_strong_text
-assert_equal "<strong>", chisel.emphasized_text("**")
+assert_equal "<strong>", chisel.translate_to_tag("**")
+end
+
+
+def test_translate_strong_text_in_the_middle_of_the_phrase
+assert_equal "Hello <strong>Raphael", chisel.translate_to_tag("Hello **Raphael")
 end
 
 end
