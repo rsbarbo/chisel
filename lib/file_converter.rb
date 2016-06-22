@@ -1,8 +1,8 @@
-require "pry"
+require 'pry'
 require_relative "file_reader"
-require_relative "chisel"
+require_relative "chisel_file"
 
   input   = FileReader.read(ARGV[0])
-  file    = Chisel.new
-  braille = file.HERE YOU WILL ADD THE METHOD THAT TRANSLATE TO HTML(input)
+  file    = ChiselFile.new
+  html = file.something(input)
             File.write(ARGV[1], html)
