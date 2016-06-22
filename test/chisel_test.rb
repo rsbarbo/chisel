@@ -1,14 +1,14 @@
 require "minitest/autorun"
 require "minitest/pride"
-require "./lib/chisel"
+require "./lib/chisel_file"
 require "pry"
 
-class ChiselTest<Minitest::Test
+class ChiselFileTest<Minitest::Test
 
 attr_reader :chisel
 
 def setup
-  @chisel = Chisel.new
+  @chisel = ChiselFile.new
 end
 
 def test_turn_pound_into_header

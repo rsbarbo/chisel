@@ -3,17 +3,10 @@ require_relative "file_reader"
 
 class ChiselFile
 
-  attr_reader :reader
 
-  def initialize
-    @reader = FileReader.new
-  end
-
-def something
-    markdown = reader.read
-    parser(markdown)
+def encode_to_html(input_read)
+    parser(input_read)
 end
-
 
 def parser(input)
   if input.include?("#")
@@ -23,17 +16,21 @@ def parser(input)
   end
 end
 
-
-def header_formatter(input)
-  if input.include?("#")
-    counter = input.count("#")
-    input.gsub("#{"#" * counter}", "<h#{counter}>") + "</h#{counter}>"  else
-    input.insert(0, "<p>") + "</p>"
-  end
+def header_formatter(text)
+    counter = text.count("#")
+    text.gsub("#{"#" * counter}", "<h#{counter}>") + "</h#{counter}>"
+    binding.pry
 end
 
-def paragraph_formatter(input)
-  "<p>\n" + (input) + "\n</p>\n"
+def something
+    text.insert(0, "<p>") + "</p>"
 end
+
+def paragraph_formatter(text)
+  "<p>\n" + (text) + "\n</p>\n"
+end
+
+
+
 
 end

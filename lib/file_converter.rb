@@ -4,5 +4,5 @@ require_relative "chisel_file"
 
   input   = FileReader.read(ARGV[0])
   file    = ChiselFile.new
-  html = file.something(input)
-            File.write(ARGV[1], html)
+  html =  file.encode_to_html(input)
+          File.write(ARGV[1], html)
