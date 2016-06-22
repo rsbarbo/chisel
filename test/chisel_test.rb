@@ -32,7 +32,7 @@ def test_text_into_same_paragraph_even_with_multiple_lines
   assert_equal "<p>\nRaphael\n You are the best\n</p>\n", chisel.parser("Raphael\n You are the best")
 end
 
-def test_test
+def test_paragraph
   assert_equal "<p>\nRaphael Raphael Raphael\n</p>\n", chisel.parser("Raphael Raphael Raphael")
 end
 
