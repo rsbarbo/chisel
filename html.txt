@@ -14,3 +14,13 @@ My favorite cuisines are:
 <li>Barbecue</li>
 <li>Mexican</li>
 </ul>
+
+<p>
+My favorite cuisines are:
+</p>
+
+<ol>
+<li>Sushi</li>
+<li>Barbeque</li>
+<li>Mexican</li>
+</ol>

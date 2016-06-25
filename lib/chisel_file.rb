@@ -16,12 +16,21 @@ class ChiselFile
           sorted_text << header_formatter(line)
         elsif line.start_with?("*") && line[1] == " "
           sorted_text << convert_unordered_list(line)
-
+        elsif line.start_with?("1") && line[1] == "."
+          sorted_text << convert_ordered_list(line)
         end
     end
     @final_text = sorted_text.join("\n")
     close_translated_tags(final_text)
   end
+
+    def convert_unordered_list(line)
+       "<ul>\n" + line.gsub(/\* (.+)/, "<li>\\1</li>") + "\n</ul>\n"
+    end
+
+    def convert_ordered_list(line)
+      "<ol>\n" + line.gsub(/^\d+\. (.+)/, "<li>\\1</li>") + "\n</ol>\n"
+    end
 
   def header_formatter(text)
         counter = text.count("#")
@@ -31,7 +40,6 @@ class ChiselFile
   def paragraph_formatter(text)
     "<p>\n" + (text) + "\n</p>\n"
   end
-
 
   def translate_to_tag(final_text)
     final_text.gsub!("**", "<strong>") if final_text.include?("**")
@@ -50,10 +58,6 @@ class ChiselFile
     end
   end
   tags_closed.join(" ")
-  end
-
-  def convert_unordered_list(line)
-     "<ul>\n" + line.gsub(/\* (.+)/, "<li>\\1</li>") + "\n</ul>\n"
   end
 
 end
