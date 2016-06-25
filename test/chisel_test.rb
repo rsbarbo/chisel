@@ -49,4 +49,8 @@ def test_translate_strong_text_in_the_middle_of_the_phrase
 assert_equal "Hello <strong>Raphael", chisel.translate_to_tag("Hello **Raphael")
 end
 
+def test_convert_unordered_list
+  assert_equal  "<ul>\n<li>Rapha</li>\n</ul>\n", chisel.convert_unordered_list("* Rapha")
+end
+
 end
