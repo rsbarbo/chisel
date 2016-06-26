@@ -7,11 +7,13 @@ class ChiselFile
 
   attr_accessor :final_text,
                 :formatter,
-                :list_converter
+                :list_converter,
+                :tagging
 
   def initialize
     @formatter = Formatter.new
     @list_converter = ListConverter.new
+    @tagging = Tagging.new
   end
 
   def parser(text)
@@ -30,7 +32,7 @@ class ChiselFile
         end
     end
     @final_text = sorted_text.join("\n")
-    Tagging.new.close_translated_tags(final_text)
+    tagging.close_translated_tags(final_text)
   end
 
 end
