@@ -23,13 +23,13 @@ class ChiselFile
       unless line.start_with?("*", "#") || line[0].to_i > 0
         sorted_text << formatter.paragraph_formatter(line)
       end
-        if line.start_with?("#")
-          sorted_text << formatter.header_formatter(line)
-        elsif line.start_with?("*") && line[1] == " "
-          sorted_text << list_converter.convert_unordered_list(line)
-        elsif line.start_with?("1") && line[1] == "."
-          sorted_text << list_converter.convert_ordered_list(line)
-        end
+      if line.start_with?("#")
+        sorted_text << formatter.header_formatter(line)
+      elsif line.start_with?("*") && line[1] == " "
+        sorted_text << list_converter.convert_unordered_list(line)
+      elsif line.start_with?("1") && line[1] == "."
+        sorted_text << list_converter.convert_ordered_list(line)
+      end
     end
     @final_text = sorted_text.join("\n")
     tagging.close_translated_tags(final_text)
